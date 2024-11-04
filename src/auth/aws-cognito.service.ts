@@ -25,6 +25,7 @@ export class AwsCognitoService {
 
   async registerUser(authRegisterUserDto: AuthRegisterUserDto) {
     const { name, email, password } = authRegisterUserDto;
+    console.log(name, email, password);
 
     return new Promise((resolve, reject) => {
       this.userPool.signUp(
@@ -41,6 +42,7 @@ export class AwsCognitoService {
           if (!result) {
             reject(err);
           } else {
+            console.log('result.user', result.user);
             resolve(result.user);
           }
         },

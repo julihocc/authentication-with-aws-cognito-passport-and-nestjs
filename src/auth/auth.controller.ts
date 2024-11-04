@@ -18,7 +18,12 @@ export class AuthController {
 
   @Post('/register')
   async register(@Body() authRegisterUserDto: AuthRegisterUserDto) {
-    return await this.awsCognitoService.registerUser(authRegisterUserDto);
+    try {
+      console.log('authRegisterUserDto', authRegisterUserDto);
+      return await this.awsCognitoService.registerUser(authRegisterUserDto);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   @Post('/login')
