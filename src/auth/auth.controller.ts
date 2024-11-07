@@ -41,7 +41,7 @@ export class AuthController {
       authChangePasswordUserDto,
     );
 
-    if (result == 'SUCCESS') {
+    if (result.$metadata.httpStatusCode === 200) {
       return { status: 'success' };
     }
   }
